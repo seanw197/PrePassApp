@@ -1,0 +1,177 @@
+﻿@*@model PrePass.Models.Assessment*@
+@model PrePass.Models.AssessmentVM
+
+@{
+    ViewData["Title"] = "Create Assessment";
+}
+
+<h1>Create Assessment</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" asp-route-eid="@ViewBag.eid" >
+            <input type="hidden" value=@ViewBag.EmpID asp-for="Assm.EmpID" />
+            <input type="hidden" value=@ViewBag.assessid asp-for="Assm.AssessID" />
+            <input type="hidden" value=@ViewBag.AppID asp-for="Assm.AppID" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Assm.HousingRef" class="control-label"></label>
+                @Html.EditorFor(m => m.Assm.HousingRef, new { @class = "form-control" })
+                <span asp-validation-for="Assm.HousingRef" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assm.Reason" class="control-label"></label>
+
+                <select asp-for="Assm.Reason"
+                        class="form-control"
+                        asp-items="Html.GetEnumSelectList<PresReason>()">
+                    <option>Select Reason</option>
+                </select>
+
+                <span asp-validation-for="Assm.Reason" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Assm.DistrictID" class="control-label"></label>
+                @Html.DropDownListFor(m => m.Assm.DistrictID, Model.Dist_list)
+                <span asp-validation-for="Assm.DistrictID" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Assm.Income" class="control-label"></label>
+
+                <select asp-for="Assm.Income"
+                        class="form-control"
+                        asp-items="Html.GetEnumSelectList<IncomeType>()">
+                    <option>Select Income Status</option>
+                </select>
+                <span asp-validation-for="Assm.Income" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Assm.CriminalOff" /> @Html.DisplayNameFor(model => model.Assm.CriminalOff)
+                </label>
+            </div>
+
+
+        <div class="form-group">
+            <label asp-for="Assm.Household" class="control-label"></label>
+            
+            <select asp-for="Assm.Household"
+                    class="form-control"
+                    asp-items="Html.GetEnumSelectList<HouseholdType>()">
+                <option>Select Household Type</option>
+            </select>
+
+            <span asp-validation-for="Assm.Household" class="text-danger"></span>
+        </div>
+            <div class="form-group">
+                <label asp-for="Assm.ChildrenUnder18" class="control-label"></label>
+                <input asp-for="Assm.ChildrenUnder18" class="form-control" />
+                <span asp-validation-for="Assm.ChildrenUnder18" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assm.ChildrenOver18" class="control-label"></label>
+                <input asp-for="Assm.ChildrenOver18" class="form-control" />
+                <span asp-validation-for="Assm.ChildrenOver18" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assm.Addiction" class="control-label"></label>
+                
+
+                <select asp-for="Assm.Addiction"
+                        class="form-control"
+                        asp-items="Html.GetEnumSelectList<AddictionType>()">
+                    <option>Select Addiction Status</option>
+                </select>
+
+                <span asp-validation-for="Assm.Addiction" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assm.HealthConditions" class="control-label"></label>
+                <input asp-for="Assm.HealthConditions" class="form-control" />
+                <span asp-validation-for="Assm.HealthConditions" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Assm.LegalIssues" /> @Html.DisplayNameFor(model => model.Assm.LegalIssues)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Assm.TempRelease" /> @Html.DisplayNameFor(model => model.Assm.TempRelease)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Assm.ProbationOfficer" /> @Html.DisplayNameFor(model => model.Assm.ProbationOfficer)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <b>Are you currently linking in with any of the following supports?</b>
+                </label>
+            </div>
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Assm.SocialWorker" /> @Html.DisplayNameFor(model => model.Assm.SocialWorker)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Assm.DeptSocial" /> @Html.DisplayNameFor(model => model.Assm.DeptSocial)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Assm.AddictionSvcs" /> @Html.DisplayNameFor(model => model.Assm.AddictionSvcs)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Assm.MHCT" /> @Html.DisplayNameFor(model => model.Assm.MHCT)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Assm.DoctorGP" /> @Html.DisplayNameFor(model => model.Assm.DoctorGP)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Assm.Keyworker" /> @Html.DisplayNameFor(model => model.Assm.Keyworker)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assm.OtherSupports" class="control-label"></label>
+                <input asp-for="Assm.OtherSupports" class="form-control" />
+                <span asp-validation-for="Assm.OtherSupports" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assm.SupprtsReferred" class="control-label"></label>
+                <input asp-for="Assm.SupprtsReferred" class="form-control" />
+                <span asp-validation-for="Assm.SupprtsReferred" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assm.FurtherInfo" class="control-label"></label>
+                <input asp-for="Assm.FurtherInfo" class="form-control" />
+                <span asp-validation-for="Assm.FurtherInfo" class="text-danger"></span>
+            </div>
+ 
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+
+    <a asp-action="Index" asp-route-eid="@ViewBag.eid" >Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

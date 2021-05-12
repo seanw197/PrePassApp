@@ -1,0 +1,85 @@
+﻿@model PrePass.Models.ViewModels.ApplicantVM
+
+@{
+    ViewData["Title"] = "Applicant Details";
+}
+
+<h1>Applicant Details</h1>
+
+<div>
+    
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.applicant.PPSN)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.applicant.PPSN)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.applicant.LName)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.applicant.LName)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.applicant.FName)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.applicant.FName)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.applicant.DateOfBirth)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.applicant.DateOfBirth)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.applicant.ContactNumber)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.applicant.ContactNumber)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.applicant.LastKnownAddress)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.applicant.LastKnownAddress)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.applicant.Gender)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.applicant.Gender)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.applicant.Ethnicity)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.applicant.Ethnicity)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.applicant.LastUpdated)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.applicant.LastUpdated)
+        </dd>
+        <dt class="col-sm-4">
+            @*@Html.DisplayNameFor(model => model.applicant.EmpID)*@
+            Last Updated By
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.staff.Name)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.applicant.Active)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.applicant.Active)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.applicant.AppID" asp-route-eid="@ViewBag.eid" asp-route-assessid="@ViewBag.assessid" asp-route-sta="@ViewBag.sta">Edit</a> |
+    <a asp-action="Index" asp-route-eid="@ViewBag.eid" asp-route-assessid="@ViewBag.assessid" asp-route-sta="@ViewBag.sta">Back to List</a>
+</div>

@@ -1,0 +1,182 @@
+﻿@model PrePass.Models.Report
+
+@{
+    ViewData["Title"] = "Summary Report";
+}
+
+<h1>@Model.ReportTitle</h1>
+<h4>Number of Assessments: @Model.AssessmentCount</h4>
+<h5>First-time Applicants: @Model.FirstTimeApp</h5>
+<h5>Repeat Applicants: @Model.RepeatApp</h5>
+
+<div>
+
+    <form asp-controller="Reports" asp-action="Index" asp-route-eid="@ViewBag.eid" asp-route-srch="@ViewBag.searchtext">
+        <p>
+            <table>
+                <tr><td>Start Date (d/m/yyyy) </td><td>End Date (d/m/yyyy)</td><td></td></tr>
+                <tr>
+                    @*<td><input type="text" name="sd" value="@Model.StartDate" /></td>
+        <td><input type="text" name="ed" value="@Model.EndDate" /></td>*@
+
+                    <td><input type="text" name="sd" value="@ViewBag.StartDate" /></td>
+                    <td><input type="text" name="ed" value="@ViewBag.EndDate" /></td>
+                    <td><input type="submit" value="Create Report" /></td>
+                </tr>
+            </table>
+        </p>
+    </form>
+
+
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.Genders)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var g in Model.Genders)
+            {
+                <span style="width:60px;display:inline;">
+                    @Html.DisplayFor(modelItem => g.Item):
+                </span>
+                <span style="width:60px;display:inline;">
+                    @Html.DisplayFor(modelItem => g.Count)
+                </span>
+                <br />
+            }
+        </dd>
+
+        <dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.Ethnicities)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var g in Model.Ethnicities)
+            {
+                <span style="width:60px;display:inline;">
+                    @Html.DisplayFor(modelItem => g.Item):
+                </span>
+                <span style="width:60px;display:inline;">
+                    @Html.DisplayFor(modelItem => g.Count)
+                </span>
+                <br />
+            }
+        </dd>
+
+
+        <dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.Reasons)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var g in Model.Reasons)
+            {
+                <span style="width:60px;display:inline;">
+                    @Html.DisplayFor(modelItem => g.Item):
+                </span>
+                <span style="width:60px;display:inline;">
+                    @Html.DisplayFor(modelItem => g.Count)
+                </span>
+                <br />
+            }
+        </dd>
+
+        <dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.Households)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var g in Model.Households)
+            {
+                <span style="width:60px;display:inline;">
+                    @Html.DisplayFor(modelItem => g.Item):
+                </span>
+                <span style="width:60px;display:inline;">
+                    @Html.DisplayFor(modelItem => g.Count)
+                </span>
+                <br />
+            }
+        </dd>
+
+
+        <dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.Districts)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var g in Model.Districts)
+            {
+                <span style="width:60px;display:inline;">
+                    @Html.DisplayFor(modelItem => g.Item):
+                </span>
+                <span style="width:60px;display:inline;">
+                    @Html.DisplayFor(modelItem => g.Count)
+                </span>
+                <br />
+            }
+        </dd>
+
+
+        <dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.Children)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var g in Model.Children)
+            {
+                <span style="width:60px;display:inline;">
+                    @Html.DisplayFor(modelItem => g.Item):
+                </span>
+                <span style="width:60px;display:inline;">
+                    @Html.DisplayFor(modelItem => g.Count)
+                </span>
+                <br />
+            }
+        </dd>
+
+        <dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.Incomes)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var g in Model.Incomes)
+            {
+                <span style="width:60px;display:inline;">
+                    @Html.DisplayFor(modelItem => g.Item):
+                </span>
+                <span style="width:60px;display:inline;">
+                    @Html.DisplayFor(modelItem => g.Count)
+                </span>
+                <br />
+            }
+        </dd>
+
+        <dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.Addictions)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var g in Model.Addictions)
+            {
+                <span style="width:60px;display:inline;">
+                    @Html.DisplayFor(modelItem => g.Item):
+                </span>
+                <span style="width:60px;display:inline;">
+                    @Html.DisplayFor(modelItem => g.Count)
+                </span>
+                <br />
+            }
+        </dd>
+
+
+        <dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.Statuses)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var g in Model.Statuses)
+            {
+                <span style="width:60px;display:inline;">
+                    @Html.DisplayFor(modelItem => g.Item):
+                </span>
+                <span style="width:60px;display:inline;">
+                    @Html.DisplayFor(modelItem => g.Count)
+                </span>
+                <br />
+            }
+        </dd>
+    </dl>
+</div>

@@ -1,0 +1,233 @@
+﻿@model PrePass.Models.AssessmentDetailsVM
+
+@{
+    ViewData["Title"] = "Assessment Details";
+}
+
+<h1>Assessment and Applicant Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">
+            @*@Html.DisplayNameFor(model => model.AssessorName)*@
+            Assessed By
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.AssessorName)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.DateCreated)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.DateCreated)
+        </dd>
+
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.LastUpdated)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.LastUpdated)
+        </dd>
+        <dt class="col-sm-4">
+            @*@Html.DisplayNameFor(model => model.assessment.applicant.FName)*@
+            Applicant
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.applicant.FName) @Html.DisplayFor(model => model.applicant.LName)
+            </dt>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.applicant.PPSN)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.applicant.PPSN)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.applicant.DateOfBirth)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.applicant.DateOfBirth)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.applicant.ContactNumber)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.applicant.ContactNumber)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.applicant.LastKnownAddress)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.applicant.LastKnownAddress)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.applicant.Gender)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.applicant.Gender)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.applicant.Ethnicity)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.applicant.Ethnicity)
+        </dd>
+        <dt class="col-sm-4">
+            @*@Html.DisplayNameFor(model => model.applicant.Active)*@
+            Applicant Record Active
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.applicant.Active)
+        </dd>
+
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.HousingRef)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.HousingRef)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.Reason)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.Reason)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.Income)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.Income)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.DistrictName)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.DistrictName)
+
+            @*@foreach (var item in @model.assessment.DistrictID)
+                {
+                @if (item.Value == @model.assessment.DistrictID.ToString())
+                {
+                    @item.Text
+                }
+            }*@
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.CriminalOff)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.CriminalOff)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.Household)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.Household)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.ChildrenUnder18)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.ChildrenUnder18)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.ChildrenOver18)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.ChildrenOver18)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.Addiction)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.Addiction)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.HealthConditions)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.HealthConditions)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.LegalIssues)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.LegalIssues)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.TempRelease)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.TempRelease)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.ProbationOfficer)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.ProbationOfficer)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.SocialWorker)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.SocialWorker)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.DeptSocial)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.DeptSocial)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.AddictionSvcs)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.AddictionSvcs)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.MHCT)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.MHCT)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.DoctorGP)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.DoctorGP)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.Keyworker)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.Keyworker)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.OtherSupports)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.OtherSupports)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.SupprtsReferred)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.SupprtsReferred)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.FurtherInfo)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.FurtherInfo)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.assessment.Status)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.assessment.Status)
+    </dl>
+</div>
+<div>
+    @*<a asp-action="Edit" asp-route-id="@Model.aid">Edit</a> |*@
+    <a asp-action="Index" asp-route-eid="@ViewBag.eid">Back to List</a>
+</div>

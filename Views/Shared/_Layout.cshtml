@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PrePass</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" asp-route-eid="@ViewBag.eid">
+                    <img src="~/images/logo.png"/>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+
+                    @if(@ViewBag.eid == null)
+                    {
+                    <form asp-action="SignIn">
+                        <div class="form-group">
+                            <table>
+                                <tr><td>Email</td><td>Password</td></tr>
+                                <tr>
+                                    <td><input type="text" name="Email" value="@ViewBag.usermail" /></td>
+                                    <td><input type="password" name="Passwd" /></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="submit" value="Sign In" name="sign" />
+                                        <input type="submit" value="Forgot Password" name="forgot" />
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr><td>@ViewBag.sm_message&nbsp;</td><td></td></tr>
+                            </table>
+                        </div>
+                    </form>
+                    }
+
+                    @if (ViewBag.userlevel > -1)
+                    {
+                    <a asp-controller="assessments" asp-action="Index" asp-route-eid="@ViewBag.eid">Assessments</a>
+                    <a asp-controller="applicants" asp-action="Index" asp-route-eid="@ViewBag.eid">Applicants</a>
+                    <a asp-controller="reports" asp-action="Index" asp-route-eid="@ViewBag.eid">Reports</a>
+                    }
+
+                    @if (ViewBag.userlevel > 0)
+                    {
+                    <a asp-controller="assessors" asp-action="Index" asp-route-eid="@ViewBag.eid">Assessors</a>
+                    }
+                    @if (ViewBag.userlevel > 1)
+                    {
+                    <a asp-controller="districts" asp-action="Index" asp-route-eid="@ViewBag.eid">Districts</a>
+                    <a asp-controller="staffs" asp-action="Index" asp-route-eid="@ViewBag.eid">Staff</a>
+                    }
+                    @* </ul>*@
+                    @if (ViewBag.userlevel > -1)
+                    {
+                    <a asp-controller="Home" asp-action="signout" asp-route-eid="@ViewBag.eid">Sign Out</a>
+                    <img src="~/images/person.png" />@ViewBag.username
+                    }
+                    <p></p>
+
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - PrePass by Niamh Brady and Sean Walsh - EAD Spring 2021
+    @*- <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

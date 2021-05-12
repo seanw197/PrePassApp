@@ -1,0 +1,53 @@
+﻿@model PrePass.Models.Staff
+
+@{
+    ViewData["Title"] = "Create New Staff Member";
+}
+
+<h1>Create New Staff Member</h1>
+
+@ViewBag.message
+
+@*<h4>Staff</h4>*@
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" asp-route-eid="@ViewBag.eid">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EmpID" class="control-label"></label>
+                <input asp-for="EmpID" class="form-control" />
+                <span asp-validation-for="EmpID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="accessLevel" class="control-label"></label><br />
+                @*<input asp-for="accessLevel" class="form-control" />*@
+                @Html.DropDownListFor(m => m.accessLevel,
+new SelectList(Enum.GetValues(typeof(AccessType))),
+"Select Access Level")
+                <span asp-validation-for="accessLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-route-eid="@ViewBag.eid">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

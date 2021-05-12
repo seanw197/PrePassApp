@@ -1,0 +1,115 @@
+﻿@*@model IEnumerable<PrePass.Models.Applicant>*@
+@model IEnumerable<PrePass.Models.ViewModels.ApplicantVM>
+
+@{
+    ViewData["Title"] = "Applicants";
+}
+
+<h1>Applicants</h1>
+
+@*@ViewBag.assessid<p></p>*@
+
+@*@ViewBag.qs*@
+
+@ViewBag.topmessage
+
+@if (ViewBag.sta == true)
+{
+<p>
+    Please select an applicant from the list. If applicant is not in the list, 
+    <a asp-action="Create" asp-route-eid="@ViewBag.eid" asp-route-assessid="@ViewBag.assessid" asp-route-srch="@ViewBag.searchtext" asp-route-sta="@ViewBag.sta">Create New Applicant Record</a>
+</p>
+}
+
+@*<form asp-controller="Applicants" method="get" asp-action="Index" asp-all-route-data="@ViewBag.qs">*@
+<form asp-controller="Applicants" asp-action="Index" asp-route-eid="@ViewBag.eid" asp-route-assessid="@ViewBag.assessid" asp-route-srch="@ViewBag.searchtext" asp-route-sta="@ViewBag.sta">
+    <p>
+        First  Name or Last Name or Year of Birth (yyyy) <br /><input type="text" name="srch" value="@ViewBag.searchtext" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<p></p>
+@ViewBag.message
+<p></p>
+
+
+@*<div class="form-group">
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </div>*@
+
+<table class="table">
+    <thead>
+        <tr>
+            @if (Model.Count() > 0)
+            {
+                @*<th>
+                    @Html.DisplayNameFor(model => model.applicant.PPSN)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.applicant.LName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.applicant.FName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.applicant.DateOfBirth)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.applicant.ContactNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.applicant.LastUpdated)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.applicant.EmpID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.applicant.Active)
+                </th>
+                <th></th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.applicant.PPSN)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.applicant.LName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.applicant.FName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.applicant.DateOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.applicant.ContactNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.applicant.LastUpdated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.staff.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.applicant.Active)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.applicant.AppID" asp-route-eid="@ViewBag.eid" asp-route-assessid="@ViewBag.assessid" asp-route-srch="@ViewBag.searchtext" asp-route-sta="@ViewBag.sta">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.applicant.AppID" asp-route-eid="@ViewBag.eid" asp-route-assessid="@ViewBag.assessid" asp-route-srch="@ViewBag.searchtext" asp-route-sta="@ViewBag.sta">Details</a>
+                    @if (item.applicant.Active == true && @ViewBag.sta == true)
+                    {
+                       @Html.Label(" | ")
+                        <a asp-controller="Assessments" asp-action="Create" asp-route-appid="@item.applicant.AppID" asp-route-eid="@ViewBag.eid">Add to Assessment</a>
+                    }
+
+                    @*<a asp-action="Delete" asp-route-id="@item.applicant.AppID">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
